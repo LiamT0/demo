@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanPro - Service Management Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🧹</div>
+                <div class="logo-text">CleanPro</div>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-label">Main</div>
+                    <div class="nav-item active" onclick="showPage('dashboard')">
+                        <span class="nav-icon">📊</span>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('jobs')">
+                        <span class="nav-icon">💼</span>
+                        <span>Jobs</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('schedule')">
+                        <span class="nav-icon">📅</span>
+                        <span>Schedule</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('clients')">
+                        <span class="nav-icon">👥</span>
+                        <span>Clients</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">Business</div>
+                    <div class="nav-item" onclick="showPage('invoices')">
+                        <span class="nav-icon">💰</span>
+                        <span>Invoices</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('quotes')">
+                        <span class="nav-icon">📝</span>
+                        <span>Quotes</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('services')">
+                        <span class="nav-icon">🧼</span>
+                        <span>Services</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">Settings</div>
+                    <div class="nav-item" onclick="showPage('settings')">
+                        <span class="nav-icon">⚙️</span>
+                        <span>Settings</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="user-profile">
+                <div class="user-avatar">A</div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@cleanpro.com</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page active">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Welcome back! 👋</h1>
+                        <p>Here's what's happening with your cleaning business today.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">Reports</button>
+                        <button class="btn btn-primary">+ New Job</button>
+                    </div>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-label">Today's Jobs</div>
+                            </div>
+                            <div class="stat-icon" style="background: rgba(0, 102, 255, 0.1); color: var(--primary);">🧹</div>
+                        </div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-meta">3 in progress • 5 scheduled</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-label">Active Clients</div>
+                            </div>
+                            <div class="stat-icon" style="background: rgba(0, 217, 176, 0.1); color: var(--secondary);">👥</div>
+                        </div>
+                        <div class="stat-value">42</div>
+                        <div class="stat-meta">6 new this month</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-label">Revenue (MTD)</div>
+                            </div>
+                            <div class="stat-icon" style="background: rgba(255, 107, 53, 0.1); color: var(--accent);">💰</div>
+                        </div>
+                        <div class="stat-value">$24.8K</div>
+                        <div class="stat-meta">8 pending invoices</div>
+                        <div class="stat-badge success">↗ +18% vs last month</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-label">Completion Rate</div>
+                            </div>
+                            <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">📈</div>
+                        </div>
+                        <div class="stat-value">94%</div>
+                        <div class="stat-meta">Above industry average</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="action-card">
+                        <div class="action-icon">📝</div>
+                        <div class="action-title">Create Quote</div>
+                        <div class="action-description">Generate professional quotes in seconds</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">🚀</div>
+                        <div class="action-title">Schedule Job</div>
+                        <div class="action-description">Assign cleaning jobs to your team</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">💳</div>
+                        <div class="action-title">Send Invoice</div>
+                        <div class="action-description">Get paid faster with online payments</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">👤</div>
+                        <div class="action-title">Add Client</div>
+                        <div class="action-description">Manage your client relationships</div>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="content-grid">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h2 class="panel-title">Recent Jobs</h2>
+                                <p class="panel-subtitle">Track and manage your active cleaning jobs</p>
+                            </div>
+                            <button class="btn btn-secondary">View All</button>
+                        </div>
+
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Deep House Cleaning</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">📍 Smith Residence</span>
+                                    <span class="job-meta-item">👤 Sarah Johnson</span>
+                                    <span class="job-meta-item">⏰ Today, 2:00 PM</span>
+                                </div>
+                            </div>
+                            <span class="status-badge in-progress">In Progress</span>
+                        </div>
+
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Office Building Sanitization</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">📍 Downtown Office Complex</span>
+                                    <span class="job-meta-item">👤 Mike Chen</span>
+                                    <span class="job-meta-item">⏰ Today, 4:30 PM</span>
+                                </div>
+                            </div>
+                            <span class="status-badge scheduled">Scheduled</span>
+                        </div>
+
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Weekly House Cleaning</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">📍 Williams Family</span>
+                                    <span class="job-meta-item">👤 Alex Rivera</span>
+                                    <span class="job-meta-item">⏰ Tomorrow, 9:00 AM</span>
+                                </div>
+                            </div>
+                            <span class="status-badge scheduled">Scheduled</span>
+                        </div>
+
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Move-Out Cleaning Service</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">📍 Greenfield Apartments</span>
+                                    <span class="job-meta-item">👤 Jordan Smith</span>
+                                    <span class="job-meta-item">⏰ Yesterday, 10:00 AM</span>
+                                </div>
+                            </div>
+                            <span class="status-badge completed">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h2 class="panel-title">Alerts</h2>
+                                <p class="panel-subtitle">Important notifications</p>
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <div class="alert-icon info">🔔</div>
+                            <div class="alert-content">
+                                <h4>3 Jobs Today</h4>
+                                <p>Check your schedule for today's assignments</p>
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <div class="alert-icon info">💵</div>
+                            <div class="alert-content">
+                                <h4>Payment Received</h4>
+                                <p>$325.50 from Smith Residence - Invoice #1003</p>
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <div class="alert-icon info">⚠️</div>
+                            <div class="alert-content">
+                                <h4>Outstanding Invoices</h4>
+                                <p>8 invoices totaling $4,890 require follow-up</p>
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <div class="alert-icon info">📊</div>
+                            <div class="alert-content">
+                                <h4>Weekly Report Ready</h4>
+                                <p>Your performance summary is available to view</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Chart -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2 class="panel-title">Revenue Overview</h2>
+                            <p class="panel-subtitle">Monthly revenue trends for the past 6 months</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart" class="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jobs Page -->
+            <div id="jobs" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Jobs</h1>
+                        <p>4 total jobs</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ New Job</button>
+                    </div>
+                </header>
+
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search jobs...">
+                </div>
+
+                <div class="filter-tabs">
+                    <div class="filter-tab active">All</div>
+                    <div class="filter-tab">Scheduled</div>
+                    <div class="filter-tab">In Progress</div>
+                    <div class="filter-tab">Completed</div>
+                </div>
+
+                <div class="panel" style="padding: 0;">
+                    <div style="padding: 2rem 2rem 0;">
+                        <h3 style="font-size: 14px; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">SATURDAY, JAN 24</h3>
+                    </div>
+                    <div style="padding: 1rem 2rem;">
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Deep Clean Service</div>
+                                <div style="margin-bottom: 0.5rem; color: var(--text-secondary);">Williams Family</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">⏰ 08:00</span>
+                                    <span class="job-meta-item">👤 James Wilson</span>
+                                    <span class="job-meta-item">📍 789 Maple Dr, Berkeley, CA 94704</span>
+                                    <span class="job-meta-item">💰 $300</span>
+                                </div>
+                            </div>
+                            <span class="status-badge completed">Completed</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 2rem 2rem 0;">
+                        <h3 style="font-size: 14px; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">MONDAY, JAN 26</h3>
+                    </div>
+                    <div style="padding: 1rem 2rem;">
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Office Sanitization</div>
+                                <div style="margin-bottom: 0.5rem; color: var(--text-secondary);">Brown Commercial</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">⏰ 10:00</span>
+                                    <span class="job-meta-item">👤 Mike Torres</span>
+                                    <span class="job-meta-item">📍 321 Business Park, San Jose, CA 95</span>
+                                    <span class="job-meta-item">💰 $99</span>
+                                </div>
+                            </div>
+                            <span class="status-badge scheduled">Scheduled</span>
+                        </div>
+
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Lawn Maintenance</div>
+                                <div style="margin-bottom: 0.5rem; color: var(--text-secondary);">Johnson Property Management</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">⏰ 14:00</span>
+                                    <span class="job-meta-item">👤 James Wilson</span>
+                                    <span class="job-meta-item">📍 456 Pine Ave, Oakland, CA 94607</span>
+                                    <span class="job-meta-item">💰 $75</span>
+                                </div>
+                            </div>
+                            <span class="status-badge in-progress">In Progress</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 2rem 2rem 0;">
+                        <h3 style="font-size: 14px; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">TODAY</h3>
+                    </div>
+                    <div style="padding: 1rem 2rem;">
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="job-title">Weekly House Cleaning</div>
+                                <div style="margin-bottom: 0.5rem; color: var(--text-secondary);">Smith Residence</div>
+                                <div class="job-meta">
+                                    <span class="job-meta-item">⏰ 09:00</span>
+                                    <span class="job-meta-item">👤 James Wilson</span>
+                                    <span class="job-meta-item">📍 123 Oak Street, San Francisco, CA 94102</span>
+                                    <span class="job-meta-item">💰 $150</span>
+                                </div>
+                            </div>
+                            <span class="status-badge scheduled">Scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Page -->
+            <div id="schedule" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Schedule</h1>
+                        <p>Jan 26 - Feb 1, 2026</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">← </button>
+                        <button class="btn btn-secondary">Today</button>
+                        <button class="btn btn-secondary">→</button>
+                    </div>
+                </header>
+
+                <div class="calendar">
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">MON</div>
+                            <div class="calendar-day-number">26</div>
+                        </div>
+                        <div class="calendar-event error">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Office...</div>
+                            <div style="font-size: 11px;">⏰ 10:00</div>
+                            <div style="font-size: 11px;">👤 Mike Torres</div>
+                        </div>
+                        <div class="calendar-event warning">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Lawn...</div>
+                            <div style="font-size: 11px;">⏰ 14:00</div>
+                            <div style="font-size: 11px;">👤 James Wilson</div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-day" style="border-color: var(--primary);">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">TUE</div>
+                            <div class="calendar-day-number" style="color: var(--primary);">27</div>
+                        </div>
+                        <div class="calendar-event">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Weekly...</div>
+                            <div style="font-size: 11px;">⏰ 09:00</div>
+                            <div style="font-size: 11px;">👤 James Wilson</div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">WED</div>
+                            <div class="calendar-day-number">28</div>
+                        </div>
+                        <div style="text-align: center; color: var(--text-tertiary); font-size: 12px; margin-top: 1rem;">No jobs</div>
+                    </div>
+
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">THU</div>
+                            <div class="calendar-day-number">29</div>
+                        </div>
+                        <div style="text-align: center; color: var(--text-tertiary); font-size: 12px; margin-top: 1rem;">No jobs</div>
+                    </div>
+
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">FRI</div>
+                            <div class="calendar-day-number">30</div>
+                        </div>
+                        <div style="text-align: center; color: var(--text-tertiary); font-size: 12px; margin-top: 1rem;">No jobs</div>
+                    </div>
+
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">SAT</div>
+                            <div class="calendar-day-number">31</div>
+                        </div>
+                        <div style="text-align: center; color: var(--text-tertiary); font-size: 12px; margin-top: 1rem;">No jobs</div>
+                    </div>
+
+                    <div class="calendar-day">
+                        <div class="calendar-day-header">
+                            <div class="calendar-day-name">SUN</div>
+                            <div class="calendar-day-number">1</div>
+                        </div>
+                        <div style="text-align: center; color: var(--text-tertiary); font-size: 12px; margin-top: 1rem;">No jobs</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; gap: 1.5rem; font-size: 14px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 16px; height: 16px; background: var(--primary); border-radius: 4px;"></div>
+                        <span>Scheduled</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 16px; height: 16px; background: var(--warning); border-radius: 4px;"></div>
+                        <span>In Progress</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 16px; height: 16px; background: var(--success); border-radius: 4px;"></div>
+                        <span>Completed</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 16px; height: 16px; background: var(--error); border-radius: 4px;"></div>
+                        <span>Urgent Priority</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients Page -->
+            <div id="clients" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Clients</h1>
+                        <p>4 total clients</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ Add Client</button>
+                    </div>
+                </header>
+
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search clients...">
+                </div>
+
+                <div class="filter-tabs">
+                    <div class="filter-tab active">All</div>
+                    <div class="filter-tab">Active</div>
+                    <div class="filter-tab">Leads</div>
+                    <div class="filter-tab">Inactive</div>
+                </div>
+
+                <div class="client-grid">
+                    <div class="client-card">
+                        <div class="client-header">
+                            <div class="client-avatar" style="background: linear-gradient(135deg, #0066FF, #00D9B0);">B</div>
+                            <div class="three-dot-menu">⋮</div>
+                        </div>
+                        <div class="client-name">Brown Commercial</div>
+                        <div class="status-badge active" style="margin-bottom: 1rem;">Active</div>
+                        <div class="client-detail">📧 contact@browncommercial.com</div>
+                        <div class="client-detail">📞 (555) 456-7890</div>
+                        <div class="client-detail">📍 San Jose, CA</div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <div class="client-avatar" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">W</div>
+                            <div class="three-dot-menu">⋮</div>
+                        </div>
+                        <div class="client-name">Williams Family</div>
+                        <div class="status-badge lead" style="margin-bottom: 1rem;">Lead</div>
+                        <div class="client-detail">📧 williams@email.com</div>
+                        <div class="client-detail">📞 (555) 345-6789</div>
+                        <div class="client-detail">📍 Berkeley, CA</div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <div class="client-avatar" style="background: linear-gradient(135deg, #059669, #10B981);">J</div>
+                            <div class="three-dot-menu">⋮</div>
+                        </div>
+                        <div class="client-name">Johnson Property Management</div>
+                        <div class="status-badge active" style="margin-bottom: 1rem;">Active</div>
+                        <div class="client-detail">📧 mjohnson@jpm.com</div>
+                        <div class="client-detail">📞 (555) 234-5678</div>
+                        <div class="client-detail">📍 Oakland, CA</div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <div class="client-avatar" style="background: linear-gradient(135deg, #DC2626, #F59E0B);">S</div>
+                            <div class="three-dot-menu">⋮</div>
+                        </div>
+                        <div class="client-name">Smith Residence</div>
+                        <div class="status-badge active" style="margin-bottom: 1rem;">Active</div>
+                        <div class="client-detail">📧 john.smith@email.com</div>
+                        <div class="client-detail">📞 (555) 123-4567</div>
+                        <div class="client-detail">📍 San Francisco, CA</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quotes Page -->
+            <div id="quotes" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Quotes</h1>
+                        <p>2 total quotes</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ New Quote</button>
+                    </div>
+                </header>
+
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search quotes...">
+                </div>
+
+                <div class="filter-tabs">
+                    <div class="filter-tab active">All</div>
+                    <div class="filter-tab">Draft</div>
+                    <div class="filter-tab">Sent</div>
+                    <div class="filter-tab">Accepted</div>
+                    <div class="filter-tab">Declined</div>
+                </div>
+
+                <div class="panel" style="padding: 2rem;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quote</th>
+                                <th>Client</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="font-weight: 600;">Monthly Cleaning Contract</div>
+                                    <div style="font-size: 13px; color: var(--text-tertiary);">Q-001235</div>
+                                </td>
+                                <td>Johnson Property Management</td>
+                                <td style="font-weight: 600;">$600</td>
+                                <td><span class="status-badge accepted">Accepted</span></td>
+                                <td>Jan 26, 2026</td>
+                                <td><span class="three-dot-menu">⋮</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-weight: 600;">Kitchen Deep Cleaning</div>
+                                    <div style="font-size: 13px; color: var(--text-tertiary);">Q-001234</div>
+                                </td>
+                                <td>Williams Family</td>
+                                <td style="font-weight: 600;">$705.25</td>
+                                <td><span class="status-badge sent">Sent</span></td>
+                                <td>Jan 26, 2026</td>
+                                <td><span class="three-dot-menu">⋮</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Invoices Page -->
+            <div id="invoices" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Invoices</h1>
+                        <p>3 total • $300 outstanding</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ New Invoice</button>
+                    </div>
+                </header>
+
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search invoices...">
+                </div>
+
+                <div class="filter-tabs">
+                    <div class="filter-tab active">All</div>
+                    <div class="filter-tab">Draft</div>
+                    <div class="filter-tab">Sent</div>
+                    <div class="filter-tab">Paid</div>
+                    <div class="filter-tab">Overdue</div>
+                </div>
+
+                <div class="panel" style="padding: 2rem;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Client</th>
+                                <th>Amount</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="font-weight: 600;">Deep Clean Service</div>
+                                    <div style="font-size: 13px; color: var(--text-tertiary);">INV-001003</div>
+                                </td>
+                                <td>Williams Family</td>
+                                <td style="font-weight: 600;">$325.5</td>
+                                <td>$0</td>
+                                <td><span class="status-badge paid">Paid</span></td>
+                                <td>Feb 23, 2026</td>
+                                <td><span class="three-dot-menu">⋮</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-weight: 600;">January Cleaning Services</div>
+                                    <div style="font-size: 13px; color: var(--text-tertiary);">INV-001001</div>
+                                </td>
+                                <td>Smith Residence</td>
+                                <td style="font-weight: 600;">$651</td>
+                                <td>$0</td>
+                                <td><span class="status-badge paid">Paid</span></td>
+                                <td>Jan 30, 2026</td>
+                                <td><span class="three-dot-menu">⋮</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-weight: 600;">December Office Cleaning</div>
+                                    <div style="font-size: 13px; color: var(--text-tertiary);">INV-001002</div>
+                                </td>
+                                <td>Johnson Property Management</td>
+                                <td style="font-weight: 600;">$300</td>
+                                <td style="color: var(--error); font-weight: 600;">$300</td>
+                                <td><span class="status-badge sent">Sent</span></td>
+                                <td>Feb 9, 2026</td>
+                                <td><span class="three-dot-menu">⋮</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Services Page -->
+            <div id="services" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Service Templates</h1>
+                        <p>Create reusable templates for your cleaning services</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ New Template</button>
+                    </div>
+                </header>
+
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search templates...">
+                </div>
+
+                <div class="template-grid">
+                    <div class="template-card">
+                        <div class="template-category" style="background: rgba(0, 217, 176, 0.1); color: var(--secondary);">Cleaning</div>
+                        <div class="template-title">Standard House Cleaning</div>
+                        <div class="template-description">Complete house cleaning including dusting, vacuuming, and mopping</div>
+                        <div class="template-meta">
+                            <span>⏰ 3h</span>
+                            <span>💰 $150</span>
+                            <span>📋 5 items</span>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-category" style="background: rgba(0, 102, 255, 0.1); color: var(--primary);">Cleaning</div>
+                        <div class="template-title">Deep Clean Service</div>
+                        <div class="template-description">Intensive cleaning including baseboards, fixtures, and detailed work</div>
+                        <div class="template-meta">
+                            <span>⏰ 5h</span>
+                            <span>💰 $300</span>
+                            <span>📋 8 items</span>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-category" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">Commercial</div>
+                        <div class="template-title">Office Sanitization</div>
+                        <div class="template-description">Professional office cleaning and sanitization service</div>
+                        <div class="template-meta">
+                            <span>⏰ 2h</span>
+                            <span>💰 $99</span>
+                            <span>📋 6 items</span>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-category" style="background: rgba(255, 107, 53, 0.1); color: var(--accent);">Specialty</div>
+                        <div class="template-title">Move-Out Cleaning</div>
+                        <div class="template-description">Thorough cleaning for property handover and inspections</div>
+                        <div class="template-meta">
+                            <span>⏰ 6h</span>
+                            <span>💰 $400</span>
+                            <span>📋 10 items</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <header class="header">
+                    <div class="header-text">
+                        <h1>Settings</h1>
+                        <p>Manage your account and team</p>
+                    </div>
+                </header>
+
+                <div class="settings-tabs">
+                    <button class="settings-tab" onclick="showSettingsTab('profile')">👤 Profile</button>
+                    <button class="settings-tab active" onclick="showSettingsTab('team')">👥 Team</button>
+                </div>
+
+                <div id="profile-tab" class="settings-content" style="display: none;">
+                    <div class="panel">
+                        <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 1.5rem;">Profile Information</h3>
+                        
+                        <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div class="client-avatar" style="width: 80px; height: 80px; font-size: 36px; background: linear-gradient(135deg, var(--primary), var(--secondary));">A</div>
+                            <div>
+                                <div style="font-weight: 700; font-size: 20px; margin-bottom: 0.25rem;">Admin User</div>
+                                <div style="color: var(--text-tertiary);">admin@cleanpro.com</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="Admin User">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="admin@cleanpro.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Role</label>
+                            <input type="text" value="admin" disabled>
+                        </div>
+
+                        <button class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+
+                <div id="team-tab" class="settings-content">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3 style="font-size: 20px; font-weight: 700;">Team Members</h3>
+                            </div>
+                            <button class="btn btn-primary">+ Add Member</button>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="team-member-info">
+                                <div class="client-avatar" style="background: linear-gradient(135deg, #FF6B35, #F59E0B);">J</div>
+                                <div style="flex: 1;">
+                                    <div class="team-member-details">
+                                        <h4>James Wilson</h4>
+                                        <div class="status-badge active" style="display: inline-block; margin-top: 0.25rem;">active</div>
+                                    </div>
+                                    <div class="team-member-contact">
+                                        <span>📧 james@company.com</span>
+                                        <span>📞 (555) 333-4444</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member-actions">
+                                <div class="status-badge" style="background: var(--bg-tertiary);">Technician</div>
+                                <button class="icon-btn">✏️</button>
+                                <button class="icon-btn">🗑️</button>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="team-member-info">
+                                <div class="client-avatar" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">M</div>
+                                <div style="flex: 1;">
+                                    <div class="team-member-details">
+                                        <h4>Mike Torres</h4>
+                                        <div class="status-badge active" style="display: inline-block; margin-top: 0.25rem;">active</div>
+                                    </div>
+                                    <div class="team-member-contact">
+                                        <span>📧 mike@company.com</span>
+                                        <span>📞 (555) 111-2222</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member-actions">
+                                <div class="status-badge" style="background: var(--bg-tertiary);">Technician</div>
+                                <button class="icon-btn">✏️</button>
+                                <button class="icon-btn">🗑️</button>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="team-member-info">
+                                <div class="client-avatar" style="background: linear-gradient(135deg, #059669, #10B981);">S</div>
+                                <div style="flex: 1;">
+                                    <div class="team-member-details">
+                                        <h4>Sarah Chen</h4>
+                                        <div class="status-badge active" style="display: inline-block; margin-top: 0.25rem;">active</div>
+                                    </div>
+                                    <div class="team-member-contact">
+                                        <span>📧 sarah@company.com</span>
+                                        <span>📞 (555) 222-3333</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-member-actions">
+                                <div class="status-badge" style="background: var(--bg-tertiary);">Manager</div>
+                                <button class="icon-btn">✏️</button>
+                                <button class="icon-btn">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
