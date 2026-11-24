@@ -35,8 +35,8 @@ function showSettingsTab(tabName) {
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('revenueChart').getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(0, 'rgba(0, 102, 255, 0.3)');
-    gradient.addColorStop(1, 'rgba(0, 102, 255, 0)');
+    gradient.addColorStop(0, 'rgba(62, 77, 67, 0.16)');
+    gradient.addColorStop(1, 'rgba(62, 77, 67, 0)');
 
     new Chart(ctx, {
         type: 'line',
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Revenue',
                 data: [15200, 18400, 19800, 17600, 22100, 24800],
-                borderColor: '#0066FF',
+                borderColor: '#3e4d43',
                 backgroundColor: gradient,
-                borderWidth: 3,
+                borderWidth: 1.5,
                 fill: true,
                 tension: 0.4,
-                pointRadius: 6,
-                pointBackgroundColor: '#0066FF',
-                pointBorderColor: '#0A0E1A',
-                pointBorderWidth: 3,
-                pointHoverRadius: 8
+                pointRadius: 3,
+                pointBackgroundColor: '#3e4d43',
+                pointBorderColor: '#fdfcf9',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5
             }]
         },
         options: {
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: '#1E2435',
-                    borderColor: '#2A3140',
+                    backgroundColor: '#3e4d43',
+                    borderColor: '#d9d6cd',
                     borderWidth: 1,
                     padding: 12,
                     displayColors: false,
@@ -80,25 +80,25 @@ document.addEventListener('DOMContentLoaded', function() {
             scales: {
                 x: {
                     grid: {
-                        color: '#2A3140',
+                        color: '#d9d6cd',
                         drawBorder: false
                     },
                     ticks: {
-                        color: '#6B7280',
+                        color: '#64675d',
                         font: {
-                            family: 'Sora'
+                            family: 'DM Sans'
                         }
                     }
                 },
                 y: {
                     grid: {
-                        color: '#2A3140',
+                        color: '#d9d6cd',
                         drawBorder: false
                     },
                     ticks: {
-                        color: '#6B7280',
+                        color: '#64675d',
                         font: {
-                            family: 'Sora'
+                            family: 'DM Sans'
                         },
                         callback: function(value) {
                             return '$' + (value / 1000) + 'K';
